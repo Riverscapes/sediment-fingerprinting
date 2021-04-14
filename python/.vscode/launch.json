@@ -10,6 +10,21 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Migrate SQLite to Postgres",
+            "type": "python",
+            "request": "launch",
+            "module": "migrate_sqlite_to_postgres",
+            "console": "integratedTerminal",
+            "args": [
+                "{env:POSTGRES_HOST}",
+                "{env:POSTGRES_PORT}",
+                "{env:POSTGRES_DB}",
+                "{env:POSTGRES_USER}",
+                "{env:POSTGRES_PASSWORD}",
+                "/Users/philip/code/sediment-fingerprinting/sqlite/2021_04_14_MRB.db"
+            ]
         }
     ]
 }

@@ -54,8 +54,8 @@ create table sample
     collection_tool      varchar(255),
     chronology_year      varchar(255),
     age_day              int,
-    created_date         timestamptz  not null default now(),
-    updated_date         timestamptz  not null default now(),
+    created_date         timestamptz default now(),
+    updated_date         timestamptz default now(),
 
     constraint fk_sample_citation_id foreign key (citation_id) references citation (citation_id),
     constraint fk_sample_data_credit_id foreign key (data_credit_id) references data_credit (data_credit_id),
@@ -78,7 +78,7 @@ end ;
 $$;
 
 create trigger tr_sample_date_updated
-    after update of citation_id, data_credit_id, category_id, location, location_description, sample_type, grain_size_range_µm, grain_size_median_µm, collection_year, collection_month, collection_tool, chronology_year, created_date
+    after update of citation_id, data_credit_id, category_id, location, location_description, sample_type, grain_size_range_µm, grain_size_median_µm, collection_year, collection_month, collection_tool, chronology_year
     on sample
     for each row
     execute function fn_after_update();
